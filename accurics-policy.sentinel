@@ -1,0 +1,12 @@
+import "http"
+import "json"
+
+req = http.request("https://tfc.accurics.com/v1/api/application/trigger/terraform-cloud").
+        with_header("Authorization", "Bearer 9ecee8aa-72dd-48b8-8139-88523cfcc215").
+        with_header("PROVIDER", "aws")
+
+resp = json.unmarshal(http.get(req).body)
+
+print(resp)
+
+main = rule { resp.high < 0 }
