@@ -9,4 +9,4 @@ resp = json.unmarshal(http.get(req).body)
 
 print(resp)
 
-main = rule { resp.high < 0 }
+main = rule { resp.high <= 0 }
